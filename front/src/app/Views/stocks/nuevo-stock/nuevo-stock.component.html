@@ -1,0 +1,66 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="provedor" (ngSubmit)="grabar()">
+      <div class="mb-2">
+        <label for="ProductoId">ProductoId</label>
+        <input type="text" class="form-control" formControlName="ProductoId" />
+        @if (provedor.invalid && (provedor.dirty || provedor.touched)) {
+        <div class="alert">
+          @if (provedor.errors?.["required"]) {
+          <div class="ng-invalid">ProductoId es requerido</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-2">
+        <label for="ProveedorId">ProveedorId</label>
+        <input type="text" class="form-control" formControlName="ProveedorId" />
+        @if (provedor.invalid && (provedor.dirty || provedor.touched)) {
+        <div class="alert">
+          @if (provedor.errors?.["required"]) {
+          <div class="ng-invalid">El ProveedorId es requerido</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-2">
+        <label for="Cantidad">Cantidad</label>
+        <input type="text" class="form-control" formControlName="Cantidad" />
+        @if (provedor.invalid && (provedor.dirty || provedor.touched)) {
+        <div class="alert">
+          @if (provedor.errors?.["required"]) {
+          <div class="ng-invalid">la cantidad es requerido</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-2">
+        <label for="Precio_Venta">Precio_Venta</label>
+        <input type="text" class="form-control" formControlName="Precio_Venta" />
+        @if (provedor.invalid && (provedor.dirty || provedor.touched)) {
+        <div class="alert">
+          @if (provedor.errors?.["required"]) {
+          <div class="ng-invalid">El precio venta es requerido</div>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="mb-2">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!provedor.valid"
+        >
+          Grabar
+        </button>
+        <button class="btn btn-secondary" routerLink="/stocks">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

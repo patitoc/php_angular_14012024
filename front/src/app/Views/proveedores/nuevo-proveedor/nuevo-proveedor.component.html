@@ -1,0 +1,61 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="provedor" (ngSubmit)="grabar()">
+      <div class="mb-2">
+        <label for="Nombres">Nombres</label>
+        <input type="text" class="form-control" formControlName="Nombres" />
+        @if (provedor.invalid && (provedor.dirty || provedor.touched)) {
+        <div class="alert">
+          @if (provedor.errors?.["required"]) {
+          <div class="ng-invalid">Nombres es requerido</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-2">
+        <label for="Telefono">Telefono</label>
+        <input type="text" class="form-control" formControlName="Telefono" />
+        @if (provedor.invalid && (provedor.dirty || provedor.touched)) {
+        <div class="alert">
+          @if (provedor.errors?.["required"]) {
+          <div class="ng-invalid">El numero telefonico es requerido</div>
+          }@else if (provedor.errors?.["minlength"]) {
+          <div>Debe tener minimo 7 caracteres.</div>
+          }@else if (provedor.errors?.["maxlength"]) {
+          <div>Debe tener maximo 17 caracteres.</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-2">
+        <label for="Correo">Correo</label>
+        <input type="email" class="form-control" formControlName="Correo" />
+        @if (provedor.invalid && (provedor.dirty || provedor.touched)) {
+        <div class="alert">
+          @if (provedor.errors?.["required"]) {
+          <div class="ng-invalid">El correo electrónico es requerido</div>
+          }@else if (provedor.errors?.["email"]) {
+          <div>No posee el formato de correo electrónico</div>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="mb-2">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!provedor.valid"
+        >
+          Grabar
+        </button>
+        <button class="btn btn-secondary" routerLink="/proveedores">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

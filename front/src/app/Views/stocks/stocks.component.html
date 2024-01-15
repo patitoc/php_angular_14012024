@@ -1,0 +1,62 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+      <hr />
+      <button class="btn btn-primary" routerLink="/nuevo-stock">Nuevo</button>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>ProductoId</th>
+              <th>ProveedorId</th>
+              <th>Cantidad</th>
+              <th>Precio_Venta</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (stock of stocks; track stock.StockId; let i =
+            $index) {
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ stock.ProductoId }}</td>
+              <td>{{ stock.ProveedorId }}</td>
+              <td>{{ stock.Cantidad }}</td>
+              <td>{{ stock.Precio_Venta }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-outline-warning"
+                  routerLink="/editar-stock/{{ stock.StockId }}"
+                >
+                  Editar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-danger"
+                  (click)="eliminar(stock.StockId)"
+                >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+            }@empty {
+            <tr>
+              <td colspan="5">No existen registros</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <button (click)="alerta()">mensaje</button>
+  

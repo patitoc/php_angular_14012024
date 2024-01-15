@@ -1,0 +1,55 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+    <hr />
+    <button class="btn btn-primary" routerLink="/nuevo-proveedor">Nuevo</button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombres</th>
+            <th>Telefono</th>
+            <th>Correo</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (proveedor of proveedores; track proveedor.ProveedorId; let i =
+          $index) {
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{ proveedor.Nombres }}</td>
+            <td>{{ proveedor.Telefono }}</td>
+            <td>{{ proveedor.Correo }}</td>
+            <td>
+              <button type="button" class="btn btn-outline-warning">
+                Editar
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                (click)="eliminar(proveedor.ProveedorId)"
+              >
+                Eliminar
+              </button>
+            </td>
+          </tr>
+          }@empty {
+          <tr>
+            <td colspan="5">No existen registros</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<button (click)="alerta()">mensaje</button>
