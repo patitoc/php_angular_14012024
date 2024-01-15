@@ -19,24 +19,24 @@ export class ProductosService {
   }
   insertar(producto: IProductos):Observable<any>{
     var prod=new FormData();
-    prod.append('nombre',producto.Nombre);
-    prod.append('precio',producto.Precio.toString());
-    prod.append('cantidad',producto.Cantidad.toString());
+    prod.append('Nombre',producto.Nombre);
+    prod.append('Precio',producto.Precio.toString());
+    prod.append('Cantidad',producto.Cantidad.toString());
   return this.cliente.post(this.urlBase + 'insertar', prod);
   }
 
   actualizar(producto: IProductos): Observable<any>{
     var prod=new FormData();
-    prod.append('id', producto.ProductoId.toString());
+    prod.append('ProductoId', producto.ProductoId.toString());
     prod.append('Nombre', producto.Nombre);
     prod.append('Precio', producto.Precio.toString());
-    prod.append('Stock', producto.Cantidad.toString());
+    prod.append('Cantidad', producto.Cantidad.toString());
     return this.cliente.post(this.urlBase + 'actualizar', prod);
   }
 
   eliminar(id:number): Observable<any>{
     var prod=new FormData();
-    prod.append('id', id.toString());
+    prod.append('ProductoId', id.toString());
     return this.cliente.post(this.urlBase + 'eliminar', prod);
   }
 }

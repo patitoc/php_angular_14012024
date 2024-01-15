@@ -19,27 +19,27 @@ export class StocksService {
   }
   insertar(stock: IStock):Observable<any>{
     var stck=new FormData();
-    stck.append('id_producto',stock.ProductoId.toString());
-    stck.append('id_proveedor',stock.ProveedorId.toString());
-    stck.append('cantidad',stock.Cantidad.toString());
-    stck.append('precio', stock.Precio_Venta.toString());
+    stck.append('ProductoId',stock.ProductoId.toString());
+    stck.append('ProveedorId',stock.ProveedorId.toString());
+    stck.append('Cantidad',stock.Cantidad.toString());
+    stck.append('Precio_Venta', stock.Precio_Venta.toString());
 
   return this.cliente.post(this.urlBase + 'insertar', stck);
   }
 
   actualizar(stock: IStock): Observable<any>{
     var stck=new FormData();
-    stck.append('id', stock.StockId.toString());
-    stck.append('id_producto', stock.ProductoId.toString());
-    stck.append('id_proveedor', stock.ProveedorId.toString());
-    stck.append('cantidad', stock.Cantidad.toString());
-    stck.append('precio', stock.Precio_Venta.toString());
+    stck.append('StockId', stock.StockId.toString());
+    stck.append('ProductoId', stock.ProductoId.toString());
+    stck.append('ProveedorId', stock.ProveedorId.toString());
+    stck.append('Cantidad', stock.Cantidad.toString());
+    stck.append('Precio_Venta', stock.Precio_Venta.toString());
     return this.cliente.post(this.urlBase + 'actualizar', stck);
   }
 
   eliminar(id:number): Observable<any>{
     var stck=new FormData();
-    stck.append('id', id.toString());
+    stck.append('StockId', id.toString());
     return this.cliente.post(this.urlBase + 'eliminar', stck);
   }
 }

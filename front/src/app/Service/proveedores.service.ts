@@ -19,24 +19,24 @@ export class ProveedoresService {
   }
   insertar(proveedor: IProveedor):Observable<any>{
     var prov=new FormData();
-    prov.append('nombres',proveedor.Nombres);
-    prov.append('telefono',proveedor.Telefono.toString());
-    prov.append('correo',proveedor.Correo.toString());
+    prov.append('Nombres',proveedor.Nombres);
+    prov.append('Telefono',proveedor.Telefono.toString());
+    prov.append('Correo',proveedor.Correo.toString());
   return this.cliente.post(this.urlBase + 'insertar', prov);
   }
 
   actualizar(proveedor: IProveedor): Observable<any>{
     var prov=new FormData();
-    prov.append('id', proveedor.ProveedorId.toString());
-    prov.append('nombres', proveedor.Nombres);
-    prov.append('telefono', proveedor.Telefono.toString());
-    prov.append('correo', proveedor.Correo.toString());
+    prov.append('ProveedorId', proveedor.ProveedorId.toString());
+    prov.append('Nombres', proveedor.Nombres);
+    prov.append('Telefono', proveedor.Telefono.toString());
+    prov.append('Correo', proveedor.Correo.toString());
     return this.cliente.post(this.urlBase + 'actualizar', prov);
   }
 
   eliminar(id:number): Observable<any>{
     var prov=new FormData();
-    prov.append('id', id.toString());
+    prov.append('ProveedorId', id.toString());
     return this.cliente.post(this.urlBase + 'eliminar', prov);
   }
 }
