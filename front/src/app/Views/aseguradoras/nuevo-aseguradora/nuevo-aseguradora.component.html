@@ -1,0 +1,56 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="asegurad" (ngSubmit)="grabar()">
+        <div class="mb-2">
+          <label for="Nombre">Nombre</label>
+          <input type="text" class="form-control" formControlName="Nombre" />
+          @if (asegurad.invalid && (asegurad.dirty || asegurad.touched)) {
+          <div class="alert">
+            @if (asegurad.errors?.["required"]) {
+            <div class="ng-invalid">Nombre es requerido</div>
+            }
+          </div>
+          }
+        </div>
+        <div class="mb-2">
+          <label for="Tipo_poliza">Tipo_poliza</label>
+          <input type="text" class="form-control" formControlName="Tipo_poliza" />
+          @if (asegurad.invalid && (asegurad.dirty || asegurad.touched)) {
+          <div class="alert">
+            @if (asegurad.errors?.["required"]) {
+            <div class="ng-invalid">El Tipo de póliza es requerido</div>
+            }
+          </div>
+          }
+        </div>
+        <div class="mb-2">
+          <label for="Cobertura">Cobertura</label>
+          <input type="text" class="form-control" formControlName="Cobertura" />
+          @if (asegurad.invalid && (asegurad.dirty || asegurad.touched)) {
+          <div class="alert">
+            @if (asegurad.errors?.["required"]) {
+            <div class="ng-invalid">La cobertura es requerida</div>
+            }
+          </div>
+          }
+        </div>
+  
+        <div class="mb-2">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!asegurad.valid"
+          >
+            Grabar
+          </button>
+          <button class="btn btn-secondary" routerLink="/aseguradoras">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,60 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+      <hr />
+      <button class="btn btn-primary" routerLink="/nuevo-aseguradora">Nuevo</button>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Tipo Poliza</th>
+              <th>Cobertura</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (aseguradora of aseguradoras; track aseguradora.ID_aseguradora; let i =
+            $index) {
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ aseguradora.Nombre }}</td>
+              <td>{{ aseguradora.Tipo_poliza }}</td>
+              <td>{{ aseguradora.Cobertura }}</td>
+            <td> 
+                <button
+                  type="button"
+                  class="btn btn-outline-warning"
+                  routerLink="/editar-aseguradora/{{ aseguradora.ID_aseguradora }}"
+                >
+                  Editar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-danger"
+                  (click)="eliminar(aseguradora.ID_aseguradora)"
+                >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+            }@empty {
+            <tr>
+              <td colspan="5">No existen registros</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <button (click)="alerta()">mensaje</button>
+  

@@ -1,0 +1,79 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="poliza" (ngSubmit)="grabar()">
+      <div class="mb-2">
+        <label for="ID_aseguradora">Aseguradora</label>
+        <select class="form-control" formControlName="ID_aseguradora">
+          <option value="0">Seleccione una opción</option>
+          @for(aseguradora of ListaAseguradoras; track aseguradora.ID_aseguradora){
+          <option [value]="aseguradora.ID_aseguradora">{{aseguradora.ID_aseguradora}}</option>
+          }
+        </select>
+
+        @if (poliza.invalid && (poliza.dirty || poliza.touched)) {
+        <div class="alert alerta-danger">
+          @if (poliza.errors?.["required"]) {
+          <div class="bg-primary">ID_aseguradora es requerido</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-2">
+        <label for="ID_cliente">Cliente</label>
+        <select class="form-control" formControlName="ID_cliente">
+          <option value="0">Seleccione una opción</option>
+          @for(cliente of ListaClientes; track cliente.ID_cliente){
+          <option [value]="cliente.ID_cliente">{{cliente.NombresCliente}}</option>
+          }
+        </select>
+
+      
+        @if (poliza.invalid && (poliza.dirty || poliza.touched)) {
+        <div class="alert">
+          @if (poliza.errors?.["required"]) {
+          <div class="ng-invalid">El ID_cliente es requerido</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-2">
+        <label for="Tipo_cobertura">Tipo_cobertura</label>
+        <input type="text" class="form-control" formControlName="Tipo_cobertura" />
+        @if (poliza.invalid && (poliza.dirty || poliza.touched)) {
+        <div class="alert">
+          @if (poliza.errors?.["required"]) {
+          <div class="ng-invalid">El tipo de cobertura es requerido</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-2">
+        <label for="Monto">Monto</label>
+        <input type="text" class="form-control" formControlName="Monto" />
+        @if (poliza.invalid && (poliza.dirty || poliza.touched)) {
+        <div class="alert">
+          @if (poliza.errors?.["required"]) {
+          <div class="ng-invalid">El monto de la poliza es requerido</div>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="mb-2">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!poliza.valid"
+        >
+          Grabar
+        </button>
+        <button class="btn btn-secondary" routerLink="/polizas">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

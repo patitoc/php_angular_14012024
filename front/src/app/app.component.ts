@@ -21,5 +21,5 @@ import { FooterComponent } from './Views/html/footer/footer.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'Inventarios';
+  title = 'seguros';
 }

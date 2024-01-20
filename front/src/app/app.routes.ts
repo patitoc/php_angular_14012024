@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './Views/dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
-import { ProductosComponent } from './Views/productos/productos.component';
+import { AseguradorasComponent } from './Views/aseguradoras/aseguradoras.component';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
-import { ProveedoresComponent } from './Views/proveedores/proveedores.component';
-import { StocksComponent } from './Views/stocks/stocks.component';
-import { NuevoProveedorComponent } from './Views/proveedores/nuevo-proveedor/nuevo-proveedor.component';
-import { NuevoProductoComponent } from './Views/productos/nuevo-producto/nuevo-producto.component';
-import { NuevoStockComponent } from './Views/stocks/nuevo-stock/nuevo-stock.component';
+import { ClientesComponent } from './Views/clientes/clientes.component';
+import { PolizasComponent } from './Views/polizas/polizas.component';
+import { NuevoClienteComponent } from './Views/clientes/nuevo-cliente/nuevo-cliente.component';
+import { NuevoAseguradoraComponent } from './Views/aseguradoras/nuevo-aseguradora/nuevo-aseguradora.component';
+import { NuevoPolizaComponent } from './Views/polizas/nuevo-poliza/nuevo-poliza.component';
 
 
 export const routes: Routes = [
@@ -15,40 +15,47 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
   },
-  { path: 'productos', component: ProductosComponent },
+  { 
+    path: 'aseguradoras', 
+    component: AseguradorasComponent 
+  },
+  {
+    path: 'nuevo-aseguradora',
+    component: NuevoAseguradoraComponent,
+  },
+    
+  {
+    path: 'editar-aseguradora/:id',
+    component: NuevoAseguradoraComponent,
+  },
 
   {
-    path: 'proveedores',
-    component: ProveedoresComponent,
+    path: 'clientes',
+    component: ClientesComponent,
   },
   {
-    path: 'nuevo-proveedor',
-    component: NuevoProveedorComponent,
+    path: 'nuevo-cliente',
+    component: NuevoClienteComponent,
   },
   {
-    path: 'nuevo-stock',
-    component: NuevoStockComponent,
+    path: 'editar-cliente/:id',
+    component: NuevoClienteComponent,
   },
   {
-    path: 'nuevo-producto',
-    component: NuevoProductoComponent,
+    path: 'polizas',
+    component: PolizasComponent,
   },
   {
-    path: 'editar-proveedor/:id',
-    component: NuevoProveedorComponent,
+    path: 'nuevo-poliza',
+    component: NuevoPolizaComponent,
   },
   {
-    path: 'editar-stock/:id',
-    component: NuevoStockComponent,
+    path: 'editar-poliza/:id',
+    component: NuevoPolizaComponent,
   },
-  {
-    path: 'editar-producto/:id',
-    component: NuevoProductoComponent,
-  },
-  {
-    path: 'stocks',
-    component: StocksComponent,
-  },
+ 
+ 
+ 
   { path: 'login', component: LoginComponent },
   { path: '**', component: PageNotFoundComponentComponent },
 ];

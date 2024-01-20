@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {ProductosComponent} from './productos/productos.component';
-import {ProveedoresComponent} from './proveedores/proveedores.component';
-import {StocksComponent} from './stocks/stocks.component'
-import { TableModule } from '@coreui/angular';
+import {AseguradorasComponent} from './aseguradoras/aseguradoras.component';
+import {ClientesComponent} from './clientes/clientes.component';
+import {PolizasComponent} from './polizas/polizas.component'
+//import {TableModule} from '@coreui/angular';
+//import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -11,10 +12,10 @@ import { TableModule } from '@coreui/angular';
 
   imports: [
     CommonModule,
-    ProductosComponent,
-    ProveedoresComponent,
-    StocksComponent,
-    TableModule,
+    AseguradorasComponent,
+    ClientesComponent,
+    PolizasComponent,
+   // TableModule,
   ],
 
 })
